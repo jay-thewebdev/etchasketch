@@ -2,6 +2,8 @@ let color = "black"
 let click = false;
 
 
+
+
 document.addEventListener("DOMContentLoaded",function(){
     createBoard(16);
 
@@ -38,8 +40,6 @@ function createBoard(size){
     for(let i = 0; i < numDivs; i++){
         let div = document.createElement('div')
         div.addEventListener("mouseover", colorDiv );
-        div.addEventListener("click", function(){
-        div.style.backgroundColor = "white"});
         board.insertAdjacentElement("beforeend", div)
     }
 }
@@ -75,6 +75,13 @@ function setColor(colorChoice){
 }
 
 function resetBoard(){
-     let divs = document.querySelectorAll("div")
+     let divs = document.querySelectorAll("div:not(.header, .footer)")
      divs.forEach((div) => div.style.backgroundColor ='white')
 }
+
+function eraser() { 
+    let div = document.querySelector("div")
+    div.addEventListener("mouseover", function(){
+    div.style.backgroundColor = "whitesmoke"})
+};
+
